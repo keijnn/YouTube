@@ -1,15 +1,24 @@
 //import modules
+import { RouteInstance } from 'atomic-router'
+import { Link } from 'atomic-router-react'
 import clsx from 'clsx'
-import { Link } from 'react-router-dom'
+import { ReactNode } from 'react'
 
-interface NavigationProps {
-  url: string
-  label: string
+interface NavigationLinkProps {
+  children: ReactNode
+  url: RouteInstance<{}>
+  label?: string
   className?: string
 }
 
-export const Navigation = ({ url, label, className }: NavigationProps) => (
+export const NavigationLink = ({
+  url,
+  children,
+  label,
+  className,
+}: NavigationLinkProps) => (
   <Link to={url} className={clsx(className)}>
     {label}
+    {children}
   </Link>
 )
